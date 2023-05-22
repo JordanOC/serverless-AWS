@@ -40,7 +40,7 @@ Type: Node.js REST API
 Name: dio-live
 ```
 ```
-$ cd dio-live
+$ cd ias-Serverless
 $ code .
 ``` 
 - No arquivo ```serverless.yml``` adicionar a região ```region: us-east-1``` dentro do escopo de ```provider:```
@@ -72,7 +72,7 @@ resources:
     ItemTable:
       Type: AWS::DynamoDB::Table
       Properties:
-          TableName: ItemTable
+          TableName: TableName
           BillingMode: PAY_PER_REQUEST
           AttributeDefinitions:
             - AttributeName: id
@@ -91,13 +91,9 @@ resources:
       role:
           statements:
             - Effect: Allow
-              Action:
-                - dynamodb:PutItem
-                - dynamodb:UpdateItem
-                - dynamodb:GetItem
-                - dynamodb:Scan
+              Action: *
               Resource:
-                - arn:aws:dynamodb:us-east-1:167880115321:table/ItemTable
+                - arn:aws:dynamodb:us-east-1:167880115321:table/TableName
   ```
   
    - Instalar dependências
